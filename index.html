@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Join Jitsi — Instant Room</title>
+  <style>
+    body { font-family: system-ui, sans-serif; display:flex; height:100vh; align-items:center; justify-content:center; margin:0; }
+    .box { text-align:center; max-width:520px; padding:20px; }
+    a { color:#0366d6; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Joining a Jitsi room...</h2>
+    <p>If your browser doesn't redirect automatically, <a id="open" href="#">click here</a>.</p>
+    <p class="small">This page opens a new anonymous Jitsi room on meet.jit.si (no login required).</p>
+  </div>
+
+  <script>
+    // Create a random-ish room name to avoid accidental visitors
+    const room = 'live-message-' + Math.random().toString(36).slice(2,10);
+    const url = 'https://meet.jit.si/' + encodeURIComponent(room);
+
+    // Try to open in same tab (safer on mobile) — you can change to window.open(url) if you prefer new tab
+    window.location.replace(url);
+
+    // fallback link
+    document.getElementById('open').href = url;
+  </script>
+</body>
+</html>
